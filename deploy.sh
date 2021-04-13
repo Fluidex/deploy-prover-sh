@@ -16,4 +16,5 @@ apt-get clean
 rm -rf /var/lib/apt/lists/*
 apt-get update
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+echo 'source $HOME/.cargo/env' >> $HOME/.bashrc

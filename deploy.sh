@@ -28,8 +28,6 @@ replace-with = "tuna"
 registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 ' >> $HOME/.cargo/config
 
-# cat $HOME/.cargo/config
-
 cargo install --git https://github.com/Fluidex/plonkit
 
 # TODO: install snarkit

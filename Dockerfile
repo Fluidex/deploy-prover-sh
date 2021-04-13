@@ -1,3 +1,28 @@
+# FROM rust:1.50 as planner
+# WORKDIR /app
+# RUN cargo install cargo-chef 
+# COPY . .
+# RUN cargo chef prepare  --recipe-path recipe.json
+
+# FROM rust:1.45 as cacher
+# WORKDIR /app
+# RUN cargo install cargo-chef
+# COPY --from=planner /app/recipe.json recipe.json
+# RUN cargo chef cook --release --recipe-path recipe.json
+
+# FROM rust:1.45 as builder
+# WORKDIR /app
+# COPY . .
+# COPY --from=cacher /app/target target
+# RUN cargo build --release
+
+# FROM rust:1.45 as runtime
+# LABEL authors="Haoyu Lin and Runchao Han"
+# WORKDIR /app
+# COPY --from=builder /app/target/release/randchaind /bin/randchaind
+# COPY --from=builder /app/tools/ /randchain-tools/
+
+
 FROM ubuntu:20.04
 
 RUN apt-get update && \
@@ -15,10 +40,3 @@ RUN apt-get update && \
 # Update new packages
 RUN apt-get update
 
-# Get Rust
-RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
-
-# ENV RUSTUP_HOME=/rust
-# ENV CARGO_HOME=/cargo
-# ENV PATH=/cargo/bin:/rust/bin:$PATH
-ENV PATH="/root/.cargo/bin:${PATH}"

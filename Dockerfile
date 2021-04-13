@@ -33,6 +33,7 @@ RUN apt-get update && \
         git \
         ssh \
         libssl-dev \
+        apt-utils \
         pkg-config \
         nasm \
         nlohmann-json3-dev && \

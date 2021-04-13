@@ -28,9 +28,13 @@ replace-with = "tuna"
 registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 ' >> $HOME/.cargo/config
 
-cargo install --git https://github.com/Fluidex/plonkit
+# install plonkit
+# cargo install --git https://github.com/Fluidex/plonkit
 
-# TODO: install snarkit
+# install snarkit
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.bashrc
+npm -g install snarkit
 
 mkdir -p $HOME/repos
 git clone git@github.com:Fluidex/circuits.git $HOME/repos/Fluidex/circuits

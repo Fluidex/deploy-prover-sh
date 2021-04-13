@@ -18,3 +18,16 @@ apt-get update
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+source $HOME/.cargo/env
+
+echo '
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = "tuna"
+[source.tuna]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+' >> $HOME/.cargo/config
+
+cat $HOME/.cargo/config
+
+cargo install --git https://github.com/Fluidex/plonkit

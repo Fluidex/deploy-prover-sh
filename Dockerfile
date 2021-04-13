@@ -33,9 +33,9 @@ RUN apt-get update && \
         git \
         ssh \
         libssl-dev \
-        nlohmann-json3-dev \
+        pkg-config \
         nasm \
-        pkg-config && \
+        nlohmann-json3-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

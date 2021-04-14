@@ -79,9 +79,9 @@ poll_interval: 10000
 circuit: "block"
 r1cs: "$HOME/repos/Fluidex/circuits/block/circuit.r1cs"
 srs_monomial_form: "$HOME/repos/Fluidex/circuits/block/mon.key"
-srs_lagrange_form: "$HOME/repos/Fluidex/circuits/block/lan.key"
+srs_lagrange_form: "$HOME/repos/Fluidex/circuits/block/lag.key"
 vk: "$HOME/repos/Fluidex/circuits/block/vk.bin"
 ' $PROVER_ID $UPSTREAM > $HOME/repos/Fluidex/prover-cluster/config/client.yaml
 
-# $HOME/repos/Fluidex/prover-cluster/target/release/client
-nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &
+$HOME/repos/Fluidex/prover-cluster/target/release/client
+# nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &

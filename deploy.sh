@@ -37,7 +37,7 @@ apt-get update
 # source /root/.bashrc
 # nvm install --lts
 # nvm use --lts
-curl -L https://npmjs.org/install.sh | sudo sh
+curl -L https://npmjs.org/install.sh | sh
 npm -g install snarkit
 
 mkdir -p $HOME/repos

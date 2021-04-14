@@ -32,7 +32,7 @@ apt-get update
 # cargo install --git https://github.com/Fluidex/plonkit
 
 # install snarkit
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
 # source ~/.bashrc
 # source /root/.bashrc
 # nvm install --lts

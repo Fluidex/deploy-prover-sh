@@ -10,6 +10,7 @@ apt-get install -y --no-install-recommends \
     libssl-dev \
     apt-utils \
     pkg-config \
+    python \
     nasm \
     nlohmann-json3-dev
 apt-get clean

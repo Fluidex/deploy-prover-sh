@@ -85,5 +85,5 @@ srs_lagrange_form: "%s/repos/Fluidex/circuits/block/lag.key"
 vk: "%s/repos/Fluidex/circuits/block/vk.bin"
 ' $PROVER_ID $UPSTREAM $HOME $HOME $HOME $HOME > $HOME/repos/Fluidex/prover-cluster/config/client.yaml
 
-# $HOME/repos/Fluidex/prover-cluster/target/release/client
-nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &
+$HOME/repos/Fluidex/prover-cluster/target/release/client
+# nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &

@@ -46,3 +46,15 @@ npm -g install snarkit
 mkdir -p $HOME/repos
 git clone https://github.com/Fluidex/circuits.git $HOME/repos/Fluidex/circuits
 git clone https://github.com/Fluidex/prover-cluster.git $HOME/repos/Fluidex/prover-cluster
+
+cd $HOME/repos/Fluidex/circuits
+cp src block -r
+mv block/block.circom block/circuit.circom
+# TODO: config here
+echo "component main = Block(2, 2, 7, 2);" >> block/circuit.circom
+snarkit compile block
+
+cd block
+plonkit setup --power 20 --srs_monomial_form mon.key
+plonkit dump-lagrange -c circuit.r1cs --srs_monomial_form mon.key --srs_lagrange_form lag.key
+plonkit export-verification-key -c circuit.r1cs --srs_monomial_form mon.key

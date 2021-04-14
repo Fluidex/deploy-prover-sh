@@ -1,1 +1,1 @@
-# deploy-prover-sh
+# deploy-sh

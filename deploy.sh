@@ -16,20 +16,20 @@ apt-get clean
 rm -rf /var/lib/apt/lists/*
 apt-get update
 
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-# echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
-# source $HOME/.cargo/env
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+source $HOME/.cargo/env
 
-# # echo '
-# # [source.crates-io]
-# # registry = "https://github.com/rust-lang/crates.io-index"
-# # replace-with = "tuna"
-# # [source.tuna]
-# # registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
-# # ' >> $HOME/.cargo/config
+# echo '
+# [source.crates-io]
+# registry = "https://github.com/rust-lang/crates.io-index"
+# replace-with = "tuna"
+# [source.tuna]
+# registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+# ' >> $HOME/.cargo/config
 
-# install plonkit
-# cargo install --git https://github.com/Fluidex/plonkit
+install plonkit
+cargo install --git https://github.com/Fluidex/plonkit
 
 # install snarkit
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
@@ -48,6 +48,7 @@ git clone https://github.com/Fluidex/circuits.git $HOME/repos/Fluidex/circuits
 git clone https://github.com/Fluidex/prover-cluster.git $HOME/repos/Fluidex/prover-cluster
 
 cd $HOME/repos/Fluidex/circuits
+npm install
 cp src block -r
 mv block/block.circom block/circuit.circom
 # TODO: config here

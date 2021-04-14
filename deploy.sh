@@ -56,7 +56,23 @@ mv block/block.circom block/circuit.circom
 echo "component main = Block(2, 2, 7, 2);" >> block/circuit.circom
 snarkit compile block
 
-cd block
+cd $HOME/repos/Fluidex/circuits/block
 plonkit setup --power 20 --srs_monomial_form mon.key
 plonkit dump-lagrange -c circuit.r1cs --srs_monomial_form mon.key --srs_lagrange_form lag.key
 plonkit export-verification-key -c circuit.r1cs --srs_monomial_form mon.key
+
+cd $HOME/repos/Fluidex/prover-cluster
+cargo build --release
+# TODO: configure prover_id & upstream
+echo '
+prover_id: 1
+upstream: "http://[::1]:50055"
+poll_interval: 10000
+circuit: "block"
+r1cs: "$HOME/repos/Fluidex/circuits/block/circuit.r1cs"
+srs_monomial_form: "$HOME/repos/Fluidex/circuits/block/mon.key"
+srs_lagrange_form: "$HOME/repos/Fluidex/circuits/block/lan.key"
+vk: "$HOME/repos/Fluidex/circuits/block/vk.bin"
+' > $HOME/repos/Fluidex/prover-cluster/config/client.yaml
+
+nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &

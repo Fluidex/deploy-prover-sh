@@ -34,6 +34,7 @@ cargo install --git https://github.com/Fluidex/plonkit
 # install snarkit
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 source ~/.bashrc
+source ~/.bash_profile
 nvm install --lts
 nvm use --lts
 npm -g install snarkit

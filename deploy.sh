@@ -11,6 +11,7 @@ apt-get install -y --no-install-recommends \
     apt-utils \
     pkg-config \
     python \
+    libgmp-dev \
     nasm \
     nlohmann-json3-dev
 apt-get clean

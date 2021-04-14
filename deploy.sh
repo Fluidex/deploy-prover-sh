@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# example usage: ./deploy.sh 2 2 7 2 1 http://[::1]:50055
+
+N_TXS=${1:-2}
+BALANCE_LEVELS=${2:-2}
+ORDER_LEVELS=${3:-7}
+ACCOUNT_LEVELS=${4:-2}
+
+PROVER_ID=${5:-1}
+UPSTREAM=${6:-http://[::1]:50055}
+
 apt-get update
 apt-get install -y --no-install-recommends \
     build-essential \
@@ -52,11 +62,6 @@ cd $HOME/repos/Fluidex/circuits
 npm install
 cp src block -r
 mv block/block.circom block/circuit.circom
-# TODO: config here
-N_TXS=2
-BALANCE_LEVELS=2
-ORDER_LEVELS=7
-ACCOUNT_LEVELS=2
 printf '
 component main = Block(%d, %d, %d, %d);
 ' $N_TXS $BALANCE_LEVELS $ORDER_LEVELS $ACCOUNT_LEVELS >> block/circuit.circom
@@ -69,9 +74,6 @@ plonkit export-verification-key -c circuit.r1cs --srs_monomial_form mon.key
 
 cd $HOME/repos/Fluidex/prover-cluster
 cargo build --release
-# TODO: config here
-PROVER_ID=1
-UPSTREAM=http://[::1]:50055
 printf '
 prover_id: %s
 upstream: "%s"
@@ -83,5 +85,5 @@ srs_lagrange_form: "$HOME/repos/Fluidex/circuits/block/lag.key"
 vk: "$HOME/repos/Fluidex/circuits/block/vk.bin"
 ' $PROVER_ID $UPSTREAM > $HOME/repos/Fluidex/prover-cluster/config/client.yaml
 
-$HOME/repos/Fluidex/prover-cluster/target/release/client
-# nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &
+# $HOME/repos/Fluidex/prover-cluster/target/release/client
+nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &

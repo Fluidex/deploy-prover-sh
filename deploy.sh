@@ -36,7 +36,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
 source $HOME/.bashrc
 source $HOME/.bash_profile
 source $HOME/.profile
-# source /root/.bashrc
+source /root/.bashrc
+source /root/.profile
 nvm install --lts
 nvm use --lts
 # curl -L https://npmjs.org/install.sh | sh

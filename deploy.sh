@@ -30,7 +30,7 @@ source $HOME/.cargo/env
 # registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 # ' >> $HOME/.cargo/config
 
-install plonkit
+# install plonkit
 cargo install --git https://github.com/Fluidex/plonkit
 
 # install snarkit
@@ -42,7 +42,6 @@ source /root/.bashrc
 source /root/.profile
 nvm install --lts
 nvm use --lts
-# curl -L https://npmjs.org/install.sh | sh
 npm -g install snarkit
 
 mkdir -p $HOME/repos

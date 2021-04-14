@@ -63,16 +63,18 @@ plonkit export-verification-key -c circuit.r1cs --srs_monomial_form mon.key
 
 cd $HOME/repos/Fluidex/prover-cluster
 cargo build --release
-# TODO: configure prover_id & upstream
-echo '
-prover_id: 1
-upstream: "http://[::1]:50055"
+# TODO: config here
+PROVER_ID=1
+UPSTREAM=http://[::1]:50055
+printf '
+prover_id: %s
+upstream: "%s"
 poll_interval: 10000
 circuit: "block"
 r1cs: "$HOME/repos/Fluidex/circuits/block/circuit.r1cs"
 srs_monomial_form: "$HOME/repos/Fluidex/circuits/block/mon.key"
 srs_lagrange_form: "$HOME/repos/Fluidex/circuits/block/lan.key"
 vk: "$HOME/repos/Fluidex/circuits/block/vk.bin"
-' > $HOME/repos/Fluidex/prover-cluster/config/client.yaml
+' $PROVER_ID $UPSTREAM > $HOME/repos/Fluidex/prover-cluster/config/client.yaml
 
 nohup $HOME/repos/Fluidex/prover-cluster/target/release/client >> $HOME/repos/Fluidex/prover-cluster/log-client.txt 2>&1 &

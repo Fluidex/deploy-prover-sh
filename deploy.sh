@@ -53,7 +53,13 @@ npm install
 cp src block -r
 mv block/block.circom block/circuit.circom
 # TODO: config here
-echo "component main = Block(2, 2, 7, 2);" >> block/circuit.circom
+N_TXS=2
+BALANCE_LEVELS=2
+ORDER_LEVELS=7
+ACCOUNT_LEVELS=2
+printf '
+component main = Block(%d, %d, %d, %d);
+' $N_TXS $BALANCE_LEVELS $ORDER_LEVELS $ACCOUNT_LEVELS >> block/circuit.circom
 snarkit compile block
 
 cd $HOME/repos/Fluidex/circuits/block

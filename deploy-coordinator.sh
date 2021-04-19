@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# example usage: ./deploy-coordinator.sh 2 2 7 2 1 50055 postgres://coordinator:coordinator_AA9944@127.0.0.1/prover_cluster
+# example usage: ./deploy-coordinator.sh 2 2 7 2 50055 postgres://coordinator:coordinator_AA9944@127.0.0.1/prover_cluster
 
 N_TXS=${1:-2}
 BALANCE_LEVELS=${2:-2}
